@@ -2,26 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
 
-## Development server
+# Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- The navbar is available on every page except the 'landing' one;
+- There is a new button on the header wich will take the user to the 'landing' page;
+- The login is synchronized for both header and component from the 'home' page;
+- Once the user clicks the login button, It will be automatically redirected to the 'user-list' page after 1.5 seconds;
+- Clicking on Logout button will take you to the 'home' page;
+- The 'users-list' page is lazy loaded and there is a pagination for it, in order to access all the API resources;
 
-## Code scaffolding
+# Possbile improvements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Persistent login, user should be redirected to 'home' page in case he is not logged in;
+- Interfaces for every resource;
+- Better styling;
