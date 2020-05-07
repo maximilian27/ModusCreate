@@ -14,6 +14,7 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    // lazy load the user-list page
     path: 'users-list',
     loadChildren: () => import('./users-list/users-list.module').then(m => m.UsersListModule)
   },

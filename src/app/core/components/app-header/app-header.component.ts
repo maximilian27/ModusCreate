@@ -21,6 +21,7 @@ export class AppHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    // retrieve the login status
     this.subscriptions.add(this.service.isLoggedIn
       .subscribe(result => {
         this.isLoggedIn = result;

@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class AppService {
+  // use a behaviorsubject to maintain the sync between components
   private isLoggedIn$: BehaviorSubject<boolean>;
 
   constructor(private sanitizer: DomSanitizer,
@@ -42,6 +43,7 @@ export class AppService {
 
   login() {
     this.isLoggedIn$.next(true);
+    // the timeout is only for visual efect in order to to show the welcome message
     setTimeout(() => {
       this.router.navigate(['/users-list']);
     }, 1500);
@@ -50,6 +52,7 @@ export class AppService {
 
   logout() {
     this.isLoggedIn$.next(false);
+    // nagigate to home page, once logged in
     this.router.navigate(['/home']);
 
   }

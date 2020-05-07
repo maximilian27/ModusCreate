@@ -18,6 +18,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUserDetails(): void {
+    // get the current id
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserDetails(id)
       .subscribe(result => this.userDetails = result.data);

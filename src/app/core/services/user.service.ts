@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private http: HttpClient) { }
+  private  baseHref: string;
+  constructor(private http: HttpClient) {
+    this.baseHref = 'https://reqres.in/api/users';
+  }
 
   getUsers(page: number): Observable<any> {
-    return this.http.get<any>(`https://reqres.in/api/users?page=${page}`)
+    return this.http.get<any>(`${this.baseHref}?page=${page}`)
       .pipe(
         tap(_ => console.log('fetched users')),
         catchError(this.handleError<any>('getUsers', {data: []}))
@@ -19,7 +21,7 @@ export class UserService {
   }
 
   getUserDetails(id: number): Observable<any> {
-    const url = `https://reqres.in/api/users/${id}`;
+    const url = `${this.baseHref}/${id}`;
     return this.http.get<any>(url).pipe(
       tap(_ => console.log(`fetched user id=${id}`)),
       catchError(this.handleError<any>(`getUserDetails id=${id}`))

@@ -29,6 +29,7 @@ export class UsersListComponent implements OnInit {
       });
   }
 
+  // get number of pages in order to generate the buttons to navigate between pages
   generatePages(numberOfPages: number) {
     this.pages = [];
     for (let i = 1; i <= numberOfPages; i++) {
@@ -36,6 +37,7 @@ export class UsersListComponent implements OnInit {
     }
   }
 
+  // set the page in order to disable the active page button and load the values from the other page once we click on it
   setPage(page: number) {
     this.currentPage = page;
     this.getUsers(this.currentPage);
