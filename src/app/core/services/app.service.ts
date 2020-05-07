@@ -4,7 +4,9 @@ import tasks, { Task } from '../tasks/tasks';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppService {
   private isLoggedIn$: BehaviorSubject<boolean>;
 
@@ -40,7 +42,9 @@ export class AppService {
 
   login() {
     this.isLoggedIn$.next(true);
-    this.router.navigate(['/users-list']);
+    setTimeout(() => {
+      this.router.navigate(['/users-list']);
+    }, 1500);
 
   }
 
