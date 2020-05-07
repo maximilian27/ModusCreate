@@ -10,8 +10,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<any> {
-    return this.http.get<any>(`https://reqres.in/api/users?page=1`)
+  getUsers(page: number): Observable<any> {
+    return this.http.get<any>(`https://reqres.in/api/users?page=${page}`)
       .pipe(
         tap(_ => console.log('fetched users')),
         catchError(this.handleError<any>('getUsers', {data: []}))

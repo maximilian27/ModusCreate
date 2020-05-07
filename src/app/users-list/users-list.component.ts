@@ -9,15 +9,35 @@ import { ApiUser } from '../core/models/api-user.model';
 })
 export class UsersListComponent implements OnInit {
   public usersList: ApiUser[];
+  public pages: number[];
+  public currentPage: number;
 
-  constructor(private userService: UserService) { }
-
-  ngOnInit(): void {
-    this.getUsers();
+  constructor(private userService: UserService) {
+    this.pages = [];
+    this.currentPage = 1;
   }
 
-  getUsers() {
-    this.userService.getUsers()
-      .subscribe(result => this.usersList = result.data);
+  ngOnInit(): void {
+    this.getUsers(this.currentPage);
+  }
+
+  getUsers(page: number) {
+    this.userService.getUsers(page)
+      .subscribe((result) => {
+        this.usersList = result.data;
+        this.generatePages(result.total_pages);
+      });
+  }
+
+  generatePages(numberOfPages: number) {
+    this.pages = [];
+    for (let i = 1; i <= numberOfPages; i++) {
+      this.pages.push(i);
+    }
+  }
+
+  setPage(page: number) {
+    this.currentPage = page;
+    this.getUsers(this.currentPage);
   }
 }

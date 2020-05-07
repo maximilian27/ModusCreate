@@ -15,7 +15,6 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     AppComponent,
     HomeComponent,
     LandingComponent,
-    UsersListComponent,
     UserDetailComponent
   ],
   imports: [BrowserModule, AppRoutingModule, CoreModule],

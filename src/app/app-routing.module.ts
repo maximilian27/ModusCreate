@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
-import { UsersListComponent } from './users-list/users-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
@@ -16,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'users-list',
-    component: UsersListComponent
+    loadChildren: () => import('./users-list/users-list.module').then(m => m.UsersListModule)
   },
   {
     path: 'user-detail/:id',

@@ -3,6 +3,9 @@
     <img alt="Modus Logo" src="assets/images/favicon-196x196.png" />
   </div>
   <div class="title" routerLink="/">Modus Create</div>
+  <div class="action-btns">
+    <button class="app-btn landing-btn" routerLink="/landing">Go to landing page</button>
+  </div>
   <div class="profile-dropdown" *ngIf="isLoggedIn">
     <div class="initials">
       {{ user.firstName.charAt(0) }}{{ user.lastName.charAt(0) }}

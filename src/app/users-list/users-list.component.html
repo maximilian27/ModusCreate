@@ -1,7 +1,19 @@
 <ng-e-app-header></ng-e-app-header>
 <!--<div>{{usersList | json}}</div>-->
-<ul>
-  <li *ngFor="let user of usersList">
-    <a [routerLink]="'/user-detail/' + user.id">{{user.first_name}} {{user.last_name}}</a>
-  </li>
-</ul>
+<div class="content">
+  <ul>
+    <li *ngFor="let user of usersList">
+      <a [routerLink]="'/user-detail/' + user.id">{{user.first_name}} {{user.last_name}}</a>
+    </li>
+  </ul>
+  <div class="pagination">
+    <div style="display: inline-flex">
+      <div *ngFor="let page of pages">
+        <button [disabled]="currentPage === page" (click)="setPage(page)">{{page}}</button>
+      </div>
+    </div>
+  </div>
+  <div class="pagination-info">Navigate between API pages</div>
+
+</div>
+
