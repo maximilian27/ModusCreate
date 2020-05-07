@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
+import { Subscription } from 'rxjs';
+import { AppService } from '../../services/app.service';
 
 @Component({
   selector: 'ng-e-app-content',
@@ -12,17 +14,25 @@ export class AppContentComponent implements OnInit {
     lastName: 'Ayaz'
   };
   isLoggedIn: boolean;
-  constructor() {}
+  public subscriptions: Subscription;
+
+  constructor(private service: AppService) {
+    this.subscriptions = new Subscription();
+  }
 
   ngOnInit() {
-    this.isLoggedIn = false;
+    this.subscriptions.add(this.service.isLoggedIn
+      .subscribe(result => {
+        this.isLoggedIn = result;
+      })
+    );
   }
 
   login() {
-    this.isLoggedIn = true;
+    this.service.login();
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.service.logout();
   }
 }

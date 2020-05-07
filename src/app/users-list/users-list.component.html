@@ -1,0 +1,7 @@
+<ng-e-app-header></ng-e-app-header>
+<!--<div>{{usersList | json}}</div>-->
+<ul>
+  <li *ngFor="let user of usersList">
+    <a [routerLink]="'/user-detail/' + user.id">{{user.first_name}} {{user.last_name}}</a>
+  </li>
+</ul>

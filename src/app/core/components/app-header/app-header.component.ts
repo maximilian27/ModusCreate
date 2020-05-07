@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
+import { AppService } from '../../services/app.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ng-e-app-header',
@@ -12,21 +14,29 @@ export class AppHeaderComponent implements OnInit {
     lastName: 'Ayaz'
   };
   isLoggedIn: boolean;
-  constructor() {}
+  public subscriptions: Subscription;
+
+  constructor(private service: AppService) {
+    this.subscriptions = new Subscription();
+  }
 
   ngOnInit() {
-    this.isLoggedIn = false;
+    this.subscriptions.add(this.service.isLoggedIn
+      .subscribe(result => {
+        this.isLoggedIn = result;
+      })
+    );
   }
 
   login() {
-    this.isLoggedIn = true;
-  }
-
-  signup() {
-    this.isLoggedIn = true;
+    this.service.login();
   }
 
   logout() {
-    this.isLoggedIn = false;
+    this.service.logout();
+  }
+
+  signup() {
+    this.service.login();
   }
 }
